@@ -1,0 +1,84 @@
+.vmodal {
+}
+
+.vmodal.open .modal-overlay, /*когда у vmodal етьс класс open то дочернему элементу modalovelay - задать стили  */
+.vmodal.open .modal-window {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.vmodal.hide .modal-overlay, /*когда у vmodal етьс класс open то дочернему элементу modalovelay - задать стили  */
+.vmodal.hide .modal-window {
+  opacity: 1;
+  z-index: 1000;
+}
+
+.vmodal.open .modal-window {
+  transform: translateY(100px);
+}
+
+.vmodal.open .modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.vmodal.hide .modal-window {
+  transform: translateY(-200px);
+}
+
+.vmodal.hide .modal-overlay {
+  background: rgba(0, 0, 0, 0);
+}
+
+.modal-window,
+.modal-overlay {
+  /* без класса .open такие стили*/
+  opacity: 0; /* для отсутствия на экране*/
+  z-index: -1;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; /*что бы элемент был повсей величине экрана*/
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0); /*.5 - прозрачность(opacity) 50%*/
+  transition: background 0.2s ease-in; /* background: background-color-image*/
+}
+
+.modal-window {
+  width: 600px;
+  border-radius: 5px;
+  background: #fff;
+  margin: 0 auto; /*посередине*/
+  transform: translateY(-200px); /* позволяет перемещать элемент по вертикали*/
+  transition: transform 0.2s ease-in; /* анимация*/
+}
+
+.modal-header {
+  padding: 5px 10px;
+  display: flex; /*расположить элементы поправому и левому краям*/
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-tittle {
+  font-size: 1.5rem;
+}
+
+.modal-close {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
+.modal-body p {
+  margin: 0 0 5px;
+}
+
+.modal-footer {
+  padding: 5px 10px;
+  border-top: 1px solid #eee;
+}

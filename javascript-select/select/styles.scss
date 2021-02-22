@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+//подключение шрифтов
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  padding-top: 5rem;
+  display:flex;
+  justify-content: center;
+}
+
+.wrap{
+  width: 500px;
+}
+
+$height:46px;//переменная
+
+.select{
+  width: 100%;//выбирает свою ширину относительно родителя
+  position: relative ;//чтобы внутренние элементы позиционировались относительно внутреннего блока
+  z-index: 100;
+
+  &.open {//&.open = .select.open
+    .select__dropdown{// при добавлении класса
+      display: block;
+    }
+
+    .select__input{
+      border-bottom: none;//удаляем нижнюю границу
+    }
+
+    .select__backdrop{
+      display: block;
+    }
+  }
+
+  &__input { //.select
+    border:1px solid #ccc;
+    border-radius: 5px;
+    height:$height;
+    display:flex; // выравнивание текста
+    align-items: center;
+    justify-content: space-between;//стрелочка в правый угол
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+  &__dropdown{
+    display: none;
+    position: absolute;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    top: $height;// что бы позиционировался рядом с инпутом(по его высоте)
+    left: 0;// что бы у дропа была полная ширина
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;//scroll
+    box-shadow: 2px 3px 5px rgba(0,0,0,.3);
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__backdrop{//BACKDROP
+    position: fixed;
+    display: none;//по умолчанию невидимый
+    top:0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: -1;
+  }
+
+  &__item{
+    padding: 1rem;
+    border-bottom: 1px solid #cccccc ;
+
+    &.selected {
+      background-color: bisque ;
+    }
+
+    &:hover{
+      background-color: #eee;
+      cursor: pointer;
+      transition: .15s background-color ease-in;
+    }
+  }
+}
